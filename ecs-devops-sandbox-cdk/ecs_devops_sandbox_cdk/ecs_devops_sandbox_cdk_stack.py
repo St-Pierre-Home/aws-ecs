@@ -1,5 +1,5 @@
 """AWS CDK module to create ECS infrastructure"""
-from aws_cdk import (Stack, aws_ecs as ecs, aws_ecr as ecr, aws_ec2 as ec2, aws_iam as iam)
+from aws_cdk import (Stack, aws_ecs as ecs, aws_ecr as ecr, aws_ec2 as ec2, aws_iam as iam, RemovalPolicy)
 from constructs import Construct
 
 class EcsDevopsSandboxCdkStack(Stack):
@@ -10,7 +10,8 @@ class EcsDevopsSandboxCdkStack(Stack):
         # Create the ECR Repository
         ecr_repository = ecr.Repository(self,
                                         "ecs-devops-sandbox-repository",
-                                        repository_name="ecs-devops-sandbox-repository")
+                                        repository_name="ecs-devops-sandbox-repository",
+                                        removal_policy=RemovalPolicy.DESTROY)
 
         # Create the ECS Cluster (and VPC)
         vpc = ec2.Vpc(self,
