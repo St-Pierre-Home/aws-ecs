@@ -52,4 +52,5 @@ class EcsDevopsSandboxCdkStack(Stack):
                                      "ecs-devops-sandbox-service",
                                      cluster=cluster,
                                      task_definition=task_definition,
-                                     service_name="ecs-devops-sandbox-service")
+                                     service_name="ecs-devops-sandbox-service",
+                                     assign_public_ip=True)
