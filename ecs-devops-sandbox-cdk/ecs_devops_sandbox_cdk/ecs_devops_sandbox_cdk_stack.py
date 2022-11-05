@@ -47,10 +47,22 @@ class EcsDevopsSandboxCdkStack(Stack):
             image=ecs.ContainerImage.from_registry("amazon/amazon-ecs-sample")
         )
 
+        sg = ec2.SecurityGroup(self, 
+                                "ecs-devops-sandbox-sg",
+                                security_group_name="ecs-devops-sandbox-sg",
+                                vpc=vpc
+                                )
+
+        sg.add_ingress_rule(ec2.Peer.any_ipv4(),  
+                            ec2.Port.tcp(8080),
+                            'Allow access on port 8080')
+
+
         # Create the ECS Service
         service = ecs.FargateService(self,
                                      "ecs-devops-sandbox-service",
                                      cluster=cluster,
                                      task_definition=task_definition,
                                      service_name="ecs-devops-sandbox-service",
-                                     assign_public_ip=True)
+                                     assign_public_ip=True,
+                                     security_groups=[sg])
