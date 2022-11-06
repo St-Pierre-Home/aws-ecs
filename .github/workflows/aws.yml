@@ -39,7 +39,7 @@ jobs:
 
       - name: cdk deploy
         uses: youyo/aws-cdk-github-actions@v2
-        working-directory: ecs-devops-sandbox-cdk
+        working-directory: ./ecs-devops-sandbox-cdk
         with:
           cdk_subcommand: 'deploy'
           cdk_args: '--require-approval never'
