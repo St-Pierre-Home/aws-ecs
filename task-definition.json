@@ -15,7 +15,15 @@
                     "protocol": "tcp"
                 }
                 
-            ]
+            ],
+            "logConfiguration":{
+                "logDriver":"awslogs",
+                "options":{
+                   "awslogs-group":"mybatch",
+                   "awslogs-region":"us-east-1",
+                   "awslogs-stream-prefix":"ecs"
+                }
+          }
         }
     ],
     "volumes": [],
