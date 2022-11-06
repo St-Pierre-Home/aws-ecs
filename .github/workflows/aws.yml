@@ -3,7 +3,7 @@ on:
     branches:
       - main
 
-name: Deploy to Amazon ECS
+name: Deploy Infra and Task to Amazon ECS
 strategy:
   max-parallel: 1
 
