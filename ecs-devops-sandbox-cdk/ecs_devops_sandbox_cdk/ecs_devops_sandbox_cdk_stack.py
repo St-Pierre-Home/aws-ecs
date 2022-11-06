@@ -35,7 +35,8 @@ class EcsDevopsSandboxCdkStack(Stack):
                 "ecr:GetDownloadUrlForLayer",
                 "ecr:BatchGetImage",
                 "logs:CreateLogStream",
-                "logs:PutLogEvents"
+                "logs:PutLogEvents",
+                "logs:CreateLogGroup"
                 ]
         ))
         task_definition = ecs.FargateTaskDefinition(self,
