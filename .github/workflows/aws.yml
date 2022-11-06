@@ -47,7 +47,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Deploy to AWS
-        run: cdk deploy --app="python ./ecs-devops-sandbox-cdk/app.py" --require-approval=never
+        run: cdk deploy --app="python ecs-devops-sandbox-cdk/app.py" --require-approval=never
 
       - name: Login to Amazon ECR
         id: login-ecr
