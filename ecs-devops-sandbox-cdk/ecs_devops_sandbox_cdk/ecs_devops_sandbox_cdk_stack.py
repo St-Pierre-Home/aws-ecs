@@ -59,10 +59,10 @@ class EcsDevopsSandboxCdkStack(Stack):
 
 
         # Create the ECS Service
-        service = ecs.FargateService(self,
-                                     "ecs-devops-sandbox-service",
-                                     cluster=cluster,
-                                     task_definition=task_definition,
-                                     service_name="ecs-devops-sandbox-service",
-                                     assign_public_ip=True,
-                                     security_groups=[sg])
+        # service = ecs.FargateService(self,
+        #                              "ecs-devops-sandbox-service",
+        #                              cluster=cluster,
+        #                              task_definition=task_definition,
+        #                              service_name="ecs-devops-sandbox-service",
+        #                              assign_public_ip=True,
+        #                              security_groups=[sg])
