@@ -50,8 +50,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Deploy to AWS
-        run: cdk deploy --app="python ecs-devops-sandbox-cdk/app.py" --require-approval=never
+      # - name: Deploy to AWS
+      #   run: cdk deploy --app="python ecs-devops-sandbox-cdk/app.py" --require-approval=never
 
       - name: Login to Amazon ECR
         id: login-ecr
@@ -79,10 +79,10 @@ jobs:
           container-name: ecs-devops-sandbox
           image: ${{ steps.build-image.outputs.image }}
 
-      # - name: Deploy Amazon ECS task definition
-      #   uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-      #   with:
-      #     task-definition: ${{ steps.task-def.outputs.task-definition }}
-      #     service: ecs-devops-sandbox-service
-      #     cluster: ecs-devops-sandbox-cluster
-      #     wait-for-service-stability: true
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          # service: ecs-devops-sandbox-service
+          cluster: ecs-devops-sandbox-cluster
+          # wait-for-service-stability: true
