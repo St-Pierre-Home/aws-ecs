@@ -14,27 +14,23 @@ jobs:
         working-directory: ecs-devops-sandbox-cdk
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
-
-      - name: cdk deploy
-        uses: youyo/aws-cdk-github-actions@v2
+          node-version: '14'
+      - name: Configure aws credentials
+        uses: aws-actions/configure-aws-credentials@master
         with:
-          cdk_subcommand: 'deploy'
-          cdk_args: '--require-approval never'
-          cdk_stack: EcsDevopsSandboxCdkStack
-          actions_comment: false
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: 'us-east-1'
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: 'us-west-2'
+      - name: Install dependencies
+        run: yarn
+      - name: Synth stack
+        run: yarn cdk synth
+      - name: Deploy stack
+        run: yarn cdk deploy --all --require-approval never
 
   deploy:
     name: Deploy
