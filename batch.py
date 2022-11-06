@@ -8,4 +8,5 @@ LOGGER = logging.getLogger()
 LOGGER.setLevel(logging.INFO)
 
 if __name__ == '__main__':
-    LOGGER.info('Running')
+    LOGGER.info('Sending to logs')
+    print('Running')
