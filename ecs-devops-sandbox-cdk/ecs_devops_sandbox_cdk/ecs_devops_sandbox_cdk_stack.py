@@ -44,7 +44,8 @@ class EcsDevopsSandboxCdkStack(Stack):
                                                     family="ecs-devops-sandbox-task-definition")
         container = task_definition.add_container(
             "ecs-devops-sandbox",
-            image=ecs.ContainerImage.from_registry("amazon/amazon-ecs-sample")
+            image=ecs.ContainerImage.from_registry("amazon/amazon-ecs-sample"),
+            logging=ecs.LogDriver.aws_logs(stream_prefix="batch"),
         )
 
         sg = ec2.SecurityGroup(self, 
