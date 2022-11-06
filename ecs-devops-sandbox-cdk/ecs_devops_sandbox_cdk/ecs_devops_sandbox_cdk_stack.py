@@ -10,8 +10,7 @@ class EcsDevopsSandboxCdkStack(Stack):
         # Create the ECR Repository
         ecr_repository = ecr.Repository(self,
                                         "ecs-devops-sandbox-repository",
-                                        repository_name="ecs-devops-sandbox-repository",
-                                        removal_policy=RemovalPolicy.DESTROY)
+                                        repository_name="ecs-devops-sandbox-repository")
 
         # Create the ECS Cluster (and VPC)
         vpc = ec2.Vpc(self,
