@@ -4,11 +4,11 @@ on:
       - main
 
 name: Deploy to Amazon ECS
+strategy:
+  max-parallel: 1
 
 jobs:
   infra:
-    strategy:
-      max-parallel: 1
     name: Deploy Infrastructure
     runs-on: ubuntu-latest
     defaults:
@@ -41,8 +41,6 @@ jobs:
   deploy:
     name: Deploy Container
     runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 1
 
     steps:
       - name: Check commit status
