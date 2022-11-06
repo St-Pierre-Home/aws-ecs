@@ -36,6 +36,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Install dependencies
+        working-directory: ecs-devops-sandbox-cdk
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
