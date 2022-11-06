@@ -1,7 +1,7 @@
 aws ecs run-task \
     --launch-type FARGATE \
     --cluster ecs-devops-sandbox-cluster \
-    --task-definition ecs-devops-sandbox-task-definition:15 \
+    --task-definition ecs-devops-sandbox-task-definition:17 \
     --network-configuration "awsvpcConfiguration={subnets=['subnet-0d14c86fdcf17ab75'],securityGroups=['sg-07df6c7c1548e8a8a'],assignPublicIp='DISABLED'}"
 
 
